@@ -13,7 +13,9 @@ function Intro() {
         />
       </div>
       <div>
-        <button className="button">Start</button>
+        <a href="/homes" className="button">
+          Start
+        </a>
       </div>
     </div>
   );

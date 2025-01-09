@@ -1,6 +1,6 @@
 import React from "react";
 
-function home() {
+function Custom() {
   return (
     <div className="selfquiz">
       <div>
@@ -17,4 +17,4 @@ function home() {
   );
 }
 
-export default home;
+export default Custom;

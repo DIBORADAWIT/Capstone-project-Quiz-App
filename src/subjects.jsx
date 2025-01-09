@@ -1,6 +1,6 @@
 import React from "react";
 
-function subjects() {
+function Subjects() {
   return (
     <div className="subs">
       <div>
@@ -28,4 +28,4 @@ function subjects() {
   );
 }
 
-export default subjects;
+export default Subjects;
