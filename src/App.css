@@ -15,7 +15,45 @@
   flex-direction: column; /* Stack components vertically */
   gap: 70px;
 }
-
+.firsthome {
+  background-color: #e8e4e4;
+  width: 393px;
+  height: 852px;
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  height: 100vh; /* Full viewport height */
+  flex-direction: column; /* Stack components vertically */
+  gap: 70px;
+}
+.signupbutton {
+  width: 269px;
+  height: 68px;
+  border-radius: 30px;
+  color: #000000;
+  background-color: #b9a3b7;
+}
+.loginbutton {
+  width: 258px;
+  height: 65px;
+  border-radius: 30px;
+  color: #000000;
+  background-color: #b9a3b7;
+}
+.googlebutton {
+  width: 329px;
+  height: 65px;
+  border-radius: 30px;
+  color: #000000;
+  background-color: #b9a3b7;
+}
+.nextbutton {
+  width: 209px;
+  height: 53px;
+  border-radius: 30px;
+  color: #000000;
+  background-color: #b9a3b7;
+}
 .logo {
   height: 246px;
   width: 288px;
@@ -48,6 +86,106 @@
   background-color: #b9a3b7;
   bottom: 10px;
   align-items: end;
+}
+.infopage {
+  background-color: #e8e4e4;
+  width: 393px;
+  height: 852px;
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  height: 100vh; /* Full viewport height */
+  flex-direction: column; /* Stack components vertically */
+  gap: 70px;
+}
+.emailbutton {
+  width: 333px;
+  height: 61px;
+  border-radius: 30px;
+  background-color: #b9a3b7;
+}
+.email {
+  width: 218px;
+  height: 32px;
+  font-family: Inter;
+  font-weight: medium;
+  font-size: 32;
+  color: #000000;
+}
+.passwordbutton {
+  width: 333px;
+  height: 61px;
+  border-radius: 30px;
+  background-color: #b9a3b7;
+}
+.password {
+  width: 201px;
+  height: 39px;
+  font-family: Inter;
+  font-weight: medium;
+  font-size: 32;
+  color: #000000;
+}
+.subs {
+  background-color: #e8e4e4;
+  width: 393px;
+  height: 852px;
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  height: 100vh; /* Full viewport height */
+  flex-direction: column; /* Stack components vertically */
+  gap: 10px;
+}
+.p {
+  width: 381px;
+  height: 116px;
+  font-family: Inter;
+  font-size: 48px;
+  font-weight: medium;
+  color: #000000;
+}
+.englishbutton {
+  width: 260px;
+  height: 52px;
+  border-radius: 40px;
+  color: #000000;
+  background-color: #b9a3b7;
+}
+.mathbutton {
+  width: 260px;
+  height: 52px;
+  border-radius: 40px;
+  color: #000000;
+  background-color: #b9a3b7;
+}
+.iqbutton {
+  width: 260px;
+  height: 52px;
+  border-radius: 40px;
+  color: #000000;
+  background-color: #b9a3b7;
+}
+.generalbutton {
+  width: 304px;
+  height: 41px;
+  border-radius: 40px;
+  color: #000000;
+  background-color: #b9a3b7;
+}
+.geobutton {
+  width: 260px;
+  height: 52px;
+  border-radius: 40px;
+  color: #000000;
+  background-color: #b9a3b7;
+}
+.biobutton {
+  width: 260px;
+  height: 52px;
+  border-radius: 40px;
+  color: #000000;
+  background-color: #b9a3b7;
 }
 
 @keyframes logo-spin {
