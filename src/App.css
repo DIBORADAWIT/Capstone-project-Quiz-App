@@ -1,0 +1,74 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+.quizappaall {
+  background-color: #e8e4e4;
+  width: 393px;
+  height: 852px;
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  height: 100vh; /* Full viewport height */
+  flex-direction: column; /* Stack components vertically */
+  gap: 70px;
+}
+
+.logo {
+  height: 246px;
+  width: 288px;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+.h1logo {
+  width: 292px;
+  height: 80px;
+  font-family: source serif pro;
+  font-size: 40px;
+  font-weight: bold;
+  color: #000000;
+  text-align: center;
+  align-items: center;
+}
+.button {
+  width: 289px;
+  height: 75px;
+  color: #000000;
+  border-radius: 30px;
+  background-color: #b9a3b7;
+  bottom: 10px;
+  align-items: end;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
