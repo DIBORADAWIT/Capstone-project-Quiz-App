@@ -5,6 +5,7 @@ import Intro from "./intro";
 import Home from "./home";
 import Information from "./information";
 import Subjects from "./subjects";
+import Custom from "./custom";
 import { Routes } from "react-router-dom";
 // import startupPage from "./components/startupPage";
 
@@ -17,6 +18,7 @@ export default function App() {
       <Home></Home>
       <Information></Information>
       <Subjects></Subjects>
+      <Custom></Custom>
     </>
   );
 }
