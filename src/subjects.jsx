@@ -12,9 +12,7 @@ function Subjects() {
       <div>
         <button className="mathbutton">Math</button>
       </div>
-      <div>
-        <button className="iqbutton">IQ Test</button>
-      </div>
+      <div></div>
       <div>
         <button className="generalbutton">General Knowledge</button>
       </div>
@@ -24,6 +22,9 @@ function Subjects() {
       <div>
         <button className="biobutton">Biology</button>
       </div>
+      <a href="/custom" className="button">
+        custom
+      </a>
     </div>
   );
 }

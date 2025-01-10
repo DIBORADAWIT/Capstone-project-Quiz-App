@@ -12,11 +12,9 @@ function Intro() {
           className="logo"
         />
       </div>
-      <div>
-        <a href="/homes" className="button">
-          Start
-        </a>
-      </div>
+      <a href="/homes" className="button">
+        start
+      </a>
     </div>
   );
 }

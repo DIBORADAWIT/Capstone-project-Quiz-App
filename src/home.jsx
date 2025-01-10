@@ -12,10 +12,10 @@ function Home() {
       <div>
         <button className="googlebutton">Continue with Google</button>
       </div>
-      <div>
-        <button className="nextbutton">next</button>
-      </div>
-      <div></div>
+
+      <a href="/infos" className="button">
+        next
+      </a>
     </div>
   );
 }

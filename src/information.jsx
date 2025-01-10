@@ -1,6 +1,6 @@
 import React from "react";
 
-function Information() {
+function nformation() {
   return (
     <div className="infopage">
       <div>
@@ -8,10 +8,12 @@ function Information() {
       </div>
       <div className="email">Email Address</div>
       <div>
-        <button className="passwordbutton"></button>
+        <a href="/subs" className="passwordbutton">
+          password
+        </a>
       </div>
       <div className="password">Password</div>
     </div>
   );
 }
-export default Information;
+export default nformation;
