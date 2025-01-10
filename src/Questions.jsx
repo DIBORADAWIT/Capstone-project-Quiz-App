@@ -15,13 +15,15 @@ function Questions() {
       });
   };
   return (
-    <div>
+    <div className="bg-red-500">
       Questions
-      <button onClick={fetchQuestions}>Fetch Questions</button>
+      <button onClick={fetchQuestions} className="text-5xl">
+        Fetch Questions
+      </button>
       {questions &&
         questions.results.map((question) => {
           return (
-            <div>
+            <div className="bg-red-500">
               <div>{question.question}</div>
               <div>{question.correct_answer}</div>
             </div>
