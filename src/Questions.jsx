@@ -71,9 +71,8 @@ function Questions() {
                   }
                   className="bg-white px-5 py-2 text-black rounded-xl hover:bg-gray-200"
                   disabled={responses[index] !== undefined} // Disable button after answering
-                >
-                  {option}
-                </button>
+                  dangerouslySetInnerHTML={{ __html: option }}
+                />
               ))}
             </div>
             {responses[index] !== undefined && (
@@ -116,6 +115,14 @@ function Questions() {
               >
                 Restart Quiz
               </button>
+
+              <a
+                // onClick={restartQuiz}
+                href="/topics"
+                className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600"
+              >
+                Change Topic
+              </a>
               <button
                 onClick={() => setShowModal(false)}
                 className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600"
