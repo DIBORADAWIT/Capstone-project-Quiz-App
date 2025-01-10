@@ -3,16 +3,22 @@ import React from "react";
 function nformation() {
   return (
     <div className="infopage">
-      <div>
-        <button className="emailbutton"></button>
-      </div>
-      <div className="email">Email Address</div>
-      <div>
-        <a href="/subs" className="passwordbutton">
-          password
+      <div className="flex flex-col justify-start text-start">
+        <div className="email">Email Address</div>
+        <div>
+          <button className="">
+            <input type="email" className="emailfield" name="" id="" />
+          </button>
+        </div>
+        <a href="/subs" className="password">
+          Password
         </a>
+        <div>
+          <dev className="">
+            <input type="password" className="passwordfield" name="" id="" />
+          </dev>
+        </div>
       </div>
-      <div className="password">Password</div>
     </div>
   );
 }

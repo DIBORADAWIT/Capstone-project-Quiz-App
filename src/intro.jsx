@@ -12,7 +12,10 @@ function Intro() {
           className="logo"
         />
       </div>
-      <a href="/homes" className="button">
+      <a
+        href="/homes"
+        className="bg-pink-200 px-10 py-2 text-black rounded-lg uppercase"
+      >
         start
       </a>
     </div>
