@@ -7,7 +7,7 @@ function Questions() {
   const [responses, setResponses] = useState({}); // Store user's responses (keyed by question index)
   const [showModal, setShowModal] = useState(false);
 
-  const { topic, difficulty, amount } = useParams();
+  const { topic = 9, difficulty = "easy", amount = 10 } = useParams(); // Default values
 
   useEffect(() => {
     fetchQuestions();
@@ -16,7 +16,6 @@ function Questions() {
   const fetchQuestions = () => {
     axios
       .get(
-        // "https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=boolean"
         `https://opentdb.com/api.php?amount=${amount}&category=${topic}&difficulty=${difficulty}&type=multiple`
       )
       .then((resp) => {
@@ -39,58 +38,58 @@ function Questions() {
     setShowModal(false);
     fetchQuestions(); // Reload questions
   };
+
+  const shuffleOptions = (incorrectAnswers, correctAnswer) => {
+    const options = [...incorrectAnswers, correctAnswer];
+    return options.sort(() => Math.random() - 0.5);
+  };
+
   return (
     <div className="flex flex-col ">
-      <div className="text-2xl font-bold ">Questions</div>
-      {questions.map((question, index) => (
-        <div
-          key={index}
-          className="flex flex-col justify-start items-start mb-6 gap-5"
-        >
-          <div className="flex gap-2">
-            <span>{index + 1} .</span>
-            <div dangerouslySetInnerHTML={{ __html: question.question }} />
-          </div>
-          <div className="flex gap-10 ml-10">
-            <button
-              onClick={() =>
-                checkAnswer("True", index, question.correct_answer)
-              }
-              className="bg-white px-5 py-2 text-black rounded-xl hover:bg-gray-200"
-              disabled={responses[index] !== undefined} // Disable button after answering
-            >
-              True
-            </button>
-            <button
-              onClick={() =>
-                checkAnswer("False", index, question.correct_answer)
-              }
-              className="bg-black px-5 py-2 text-white rounded-xl hover:bg-gray-950"
-              disabled={responses[index] !== undefined} // Disable button after answering
-            >
-              False
-            </button>
-          </div>
-          {responses[index] !== undefined && (
-            <div
-              className={`mt-2 ${
-                responses[index] ? "text-green-500" : "text-red-500"
-              }`}
-            >
-              {responses[index] ? "Correct" : "Incorrect"}
+      <div className="text-2xl font-bold">Questions</div>
+      {questions.map((question, index) => {
+        const options = shuffleOptions(
+          question.incorrect_answers,
+          question.correct_answer
+        );
+
+        return (
+          <div
+            key={index}
+            className="flex flex-col justify-start items-start mb-6 gap-5"
+          >
+            <div className="flex gap-2">
+              <span>{index + 1} .</span>
+              <div dangerouslySetInnerHTML={{ __html: question.question }} />
             </div>
-          )}
-        </div>
-      ))}
+            <div className="flex gap-10 ml-10">
+              {options.map((option, optIndex) => (
+                <button
+                  key={optIndex}
+                  onClick={() =>
+                    checkAnswer(option, index, question.correct_answer)
+                  }
+                  className="bg-white px-5 py-2 text-black rounded-xl hover:bg-gray-200"
+                  disabled={responses[index] !== undefined} // Disable button after answering
+                >
+                  {option}
+                </button>
+              ))}
+            </div>
+            {responses[index] !== undefined && (
+              <div
+                className={`mt-2 ${
+                  responses[index] ? "text-green-500" : "text-red-500"
+                }`}
+              >
+                {responses[index] ? "Correct" : "Incorrect"}
+              </div>
+            )}
+          </div>
+        );
+      })}
       <button
         className="bg-blue-500 text-white px-6 py-3 rounded-lg mt-5 hover:bg-blue-600"
-        // onClick={() =>
-        //   alert(
-        //     `You answered ${
-        //       Object.values(responses).filter(Boolean).length
-        //     } correctly!`
-        //   )
-        // }
         onClick={() => {
           setShowModal(true);
         }}
