@@ -20,7 +20,7 @@ function NoOfQuestions() {
               value={questions}
             />
           </div>
-          <div className="flex gap-10 mt-10">
+          <div className="flex gap-10 mt-10 justify-center">
             <a
               href={`/difficulty/${topic}/${topicName}`}
               className="bg-white text-black px-10 py-2 rounded-lg"

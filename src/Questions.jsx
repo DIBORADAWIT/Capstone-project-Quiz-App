@@ -47,14 +47,16 @@ function Questions() {
     return options.sort(() => Math.random() - 0.5);
   };
 
-  const nextQuestion = (responses) => {
+  const nextQuestion = (correct) => {
     if (questionNumber < questions.length - 1) {
       setQuestionNumber((prev) => prev + 1);
     } else {
       // Save to history
-      var correct = Object.values(responses).filter(Boolean).length;
       var incorrect = questions.length - correct;
-      handleSaveHistory(topicName, correct, incorrect);
+      handleSaveHistory(correct, incorrect);
+
+      console.log("correct", correct);
+      console.log("incorrect", incorrect);
 
       // Show the modal when the quiz ends
       setShowModal(true);
@@ -80,11 +82,11 @@ function Questions() {
   return (
     <div className="flex flex-col items-center">
       <div className="text-4xl font-extrabold mb-20 ">{topicName}</div>
-      <div className="text-2xl font-bold mb-5">
+      <div className="text-2xl font-bold mb-5 text-center">
         Question {questionNumber + 1}
       </div>
       {currentQuestion && (
-        <div className="flex flex-col items-start gap-5">
+        <div className="flex flex-col items-center gap-5">
           <div className="text-lg">
             <div
               dangerouslySetInnerHTML={{ __html: currentQuestion.question }}
@@ -131,7 +133,10 @@ function Questions() {
         </button>
         <button
           onClick={() => {
-            nextQuestion(responses);
+            var correct = Object.values(responses).filter(Boolean).length;
+
+            console.log("firstCorrect", correct);
+            nextQuestion(correct);
           }}
           className="bg-blue-500 text-white px-5 py-2 rounded-lg hover:bg-blue-600"
         >

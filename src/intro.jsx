@@ -8,22 +8,53 @@ function Intro() {
 
   return (
     <div>
-      <h2>User History</h2>
+      <div className="text-5xl font-extrabold uppercase underline">
+        User History
+      </div>
+
       {history.length > 0 ? (
-        <ul>
+        <div className="flex flex-wrap gap-5 mt-10 ">
           {history.map((entry, index) => (
-            <li key={index}>
-              <p>Topic: {entry.topicName}</p>
-              <p>Correct: {entry.correctCount}</p>
-              <p>Incorrect: {entry.incorrectCount}</p>
-              <p>Date: {new Date(entry.timestamp).toLocaleString()}</p>
-            </li>
+            <div className="bg-white text-black p-5 rounded-lg" key={index}>
+              <div className="flex gap-10 justify-between">
+                <div className="font-bold">Topic</div>
+                <div>{entry.topicName}</div>
+              </div>
+              <div className="flex gap-10 justify-between">
+                <div className="font-bold">Correct</div>
+                <div>{entry.correctCount}</div>
+              </div>
+              <div className="flex gap-10 justify-between">
+                <div className="font-bold">Incorrect</div>
+                <div>{entry.incorrectCount}</div>
+              </div>
+              <div className="flex gap-10 justify-between">
+                <div className="font-bold">Date</div>
+                <div>{new Date(entry.timestamp).toLocaleString()}</div>
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
       ) : (
         <p>No history found</p>
       )}
-      <button onClick={clearHistory}>Clear History</button>
+      <div className=" flex gap-10 justify-center mt-10">
+        {history.length > 0 ? (
+          <button
+            className="text-3xl bg-red-700 text-white px-5 py-2 rounded-lg hover:bg-red-800 hover:text-white"
+            onClick={clearHistory}
+          >
+            Clear History
+          </button>
+        ) : null}
+
+        <a
+          className="text-3xl bg-green-700 text-white px-5 py-2 rounded-lg hover:bg-green-800 hover:text-white"
+          href="/topics"
+        >
+          Start Quiz
+        </a>
+      </div>
     </div>
   );
 }
