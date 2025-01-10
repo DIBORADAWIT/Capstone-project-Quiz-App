@@ -6,7 +6,9 @@ function Difficulty() {
 
   const [difficulty, setDifficulty] = useState("");
   return (
-    <div className="">
+    <div className="flex flex-col gap-20">
+      <div className="text-7xl font-extrabold underline">Difficulty</div>
+
       <div className="flex flex-col gap-5">
         <button
           className="bg-green-300 px-5 py-2 focus:bg-green-500 "
@@ -26,7 +28,7 @@ function Difficulty() {
         >
           Hard
         </button>
-        <div className="flex gap-10">
+        <div className="flex justify-between gap-10 mt-10">
           <a
             className="bg-white text-black px-10 py-2 rounded-lg"
             href={`/topics`}

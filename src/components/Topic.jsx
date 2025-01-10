@@ -21,15 +21,28 @@ function Topic() {
     setSelectedTopic(id);
   };
 
+  const colors = [
+    "bg-red-500",
+    "bg-blue-500",
+    "bg-green-500",
+    "bg-yellow-500",
+    "bg-purple-500",
+    "bg-pink-500",
+    "bg-indigo-500",
+    "bg-teal-500",
+  ];
+
   return (
-    <div>
-      <div>Topic</div>
+    <div className="flex flex-col gap-20">
+      <div className="text-7xl font-extrabold underline">Topic</div>
       {selectedTopic && <div> selected topic id is {selectedTopic}</div>}
-      <div className="flex flex-col justify-start items-start gap-4">
-        {topics.map((topic) => {
+      <div className="flex flex-wrap gap-4">
+        {topics.map((topic, index) => {
           return (
             <a
-              className="bg-white text-black px-5 py-2"
+              className={`${
+                colors[index % colors.length]
+              } text-black px-5 py-2`}
               href={`/difficulty/${topic.id}`}
               //   onClick={() => getTopicID(topic.id)}
             >
