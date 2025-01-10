@@ -6,8 +6,10 @@ function Difficulty() {
 
   const [difficulty, setDifficulty] = useState("");
   return (
-    <div className="flex flex-col gap-20">
-      <div className="text-7xl font-extrabold underline">Difficulty</div>
+    <div className="flex flex-col gap-20 ">
+      <div className="sm:text-7xl text-3xl font-extrabold underline">
+        Difficulty
+      </div>
 
       <div className="flex flex-col gap-5">
         <button

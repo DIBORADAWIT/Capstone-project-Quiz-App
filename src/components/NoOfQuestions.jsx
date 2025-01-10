@@ -7,7 +7,9 @@ function NoOfQuestions() {
   return (
     <div>
       <div className="flex flex-col gap-20">
-        <div className="text-7xl font-extrabold underline">#Questions</div>
+        <div className="sm:text-7xl text-3xl font-extrabold underline">
+          #Questions
+        </div>
 
         <div className="flex flex-col gap-10">
           <div className="flex flex-col justify-start items-start gap-4">

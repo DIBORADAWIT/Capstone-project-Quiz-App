@@ -37,19 +37,19 @@ function Topic() {
 
   return (
     <div className="flex flex-col gap-20">
-      <div className="text-7xl font-extrabold underline">Topic</div>
+      <div className="sm:text-7xl text-3xl font-extrabold underline">Topic</div>
       <div>
         <input
           type="text"
           placeholder="Search ..."
           name=""
-          className="w-[50vw] bg-white text-black px-10 py-3 rounded-full"
+          className="sm:w-[50vw] w-full bg-white text-black px-10 py-3 rounded-full"
           id=""
           onChange={(e) => setSearch(e.target.value)}
         />
       </div>
       {selectedTopic && <div> selected topic id is {selectedTopic}</div>}
-      <div className="flex flex-wrap gap-4">
+      <div className="flex flex-wrap justify-center gap-4">
         {filteredTopics.length ? (
           filteredTopics.map((topic, index) => {
             return (

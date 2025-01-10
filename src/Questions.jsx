@@ -78,7 +78,9 @@ function Questions() {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="text-4xl font-extrabold mb-20 ">{topicName}</div>
+      <div className="sm:text-4xl text-2xl font-extrabold mb-20 ">
+        {topicName}
+      </div>
       <div className="text-2xl font-bold mb-5 text-center">
         Question {questionNumber + 1}
       </div>
@@ -89,7 +91,7 @@ function Questions() {
               dangerouslySetInnerHTML={{ __html: currentQuestion.question }}
             />
           </div>
-          <div className="flex gap-5">
+          <div className="flex flex-wrap justify-center gap-5">
             {shuffleOptions(
               currentQuestion.incorrect_answers,
               currentQuestion.correct_answer

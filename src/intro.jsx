@@ -8,12 +8,12 @@ function Intro() {
 
   return (
     <div>
-      <div className="text-5xl font-extrabold uppercase underline">
+      <div className="sm:text-5xl text-3xl  font-extrabold uppercase underline">
         User History
       </div>
 
       {history.length > 0 ? (
-        <div className="flex flex-wrap gap-5 mt-10 ">
+        <div className="flex flex-wrap justify-center gap-5 mt-10 ">
           {history.map((entry, index) => (
             <div className="bg-white text-black p-5 rounded-lg" key={index}>
               <div className="flex gap-10 justify-between">
@@ -41,7 +41,7 @@ function Intro() {
       <div className=" flex gap-10 justify-center mt-10">
         {history.length > 0 ? (
           <button
-            className="text-3xl bg-red-700 text-white px-5 py-2 rounded-lg hover:bg-red-800 hover:text-white"
+            className="sm:text-3xl text-lg bg-red-700 text-white px-5 py-2 rounded-lg hover:bg-red-800 hover:text-white"
             onClick={clearHistory}
           >
             Clear History
@@ -49,7 +49,7 @@ function Intro() {
         ) : null}
 
         <a
-          className="text-3xl bg-green-700 text-white px-5 py-2 rounded-lg hover:bg-green-800 hover:text-white"
+          className="sm:text-3xl text-lg bg-green-700 text-white px-5 py-2 rounded-lg hover:bg-green-800 hover:text-white"
           href="/topics"
         >
           Start Quiz
