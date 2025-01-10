@@ -1,8 +1,12 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 
 function Subjects() {
+  const { topic, difficulty } = useParams();
   return (
     <div className="subs">
+      <div>Topic: {topic}</div>
+      <div>Difficulty: {difficulty}</div>
       <div>
         <p className="p">Choose Your Subject Item</p>
       </div>
@@ -22,7 +26,7 @@ function Subjects() {
       <div>
         <button className="biobutton">Biology</button>
       </div>
-      <a href="/custom" className="button">
+      <a href={`/numberOfQuestions/${topic}/${difficulty}`} className="button">
         custom
       </a>
     </div>

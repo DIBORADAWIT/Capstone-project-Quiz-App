@@ -3,10 +3,12 @@ import Intro from "./Intro";
 import Home from "./Home";
 import Information from "./Information";
 import Subjects from "./Subjects";
-import Custom from "./Custom";
 
 import React from "react";
 import Questions from "./Questions";
+import Topic from "./components/Topic";
+import NoOfQuestions from "./components/NoOfQuestions";
+import Difficulty from "./components/Difficulty";
 
 function Routers() {
   return (
@@ -15,10 +17,17 @@ function Routers() {
         {/* <intro /> */}
       </Route>
       <Route path="/homes" element={<Home />} />
-      <Route path="/infos" element={<Information />} />
-      <Route path="/subs" element={<Subjects />} />
-      <Route path="/custom" element={<Custom />} />
-      <Route path="/questions" element={<Questions />} />
+
+      <Route path="/topics" element={<Topic />} />
+      <Route path="/difficulty/:topic" element={<Difficulty />} />
+      <Route
+        path="/noOfQuestions/:topic/:difficulty"
+        element={<NoOfQuestions />}
+      />
+      <Route
+        path="/questions/:topic/:difficulty/:amount"
+        element={<Questions />}
+      />
     </Routes>
   );
 }

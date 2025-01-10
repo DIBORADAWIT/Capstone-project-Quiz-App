@@ -1,10 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 function Questions() {
   const [questions, setQuestions] = useState([]);
   const [responses, setResponses] = useState({}); // Store user's responses (keyed by question index)
   const [showModal, setShowModal] = useState(false);
+
+  const { topic, difficulty, amount } = useParams();
 
   useEffect(() => {
     fetchQuestions();
@@ -13,7 +16,8 @@ function Questions() {
   const fetchQuestions = () => {
     axios
       .get(
-        "https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=boolean"
+        // "https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=boolean"
+        `https://opentdb.com/api.php?amount=${amount}&category=${topic}&difficulty=${difficulty}&type=multiple`
       )
       .then((resp) => {
         setQuestions(resp.data.results);
