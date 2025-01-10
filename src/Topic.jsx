@@ -11,13 +11,11 @@ function Topic() {
 
   const fetchTopics = () => {
     axios.get("https://opentdb.com/api_category.php").then((resp) => {
-      //   console.log(resp.data.trivia_categories);
       useTopic(resp.data.trivia_categories);
     });
   };
 
   const getTopicID = (id) => {
-    console.log("id", id);
     setSelectedTopic(id);
   };
 

@@ -55,9 +55,6 @@ function Questions() {
       var incorrect = questions.length - correct;
       handleSaveHistory(correct, incorrect);
 
-      console.log("correct", correct);
-      console.log("incorrect", incorrect);
-
       // Show the modal when the quiz ends
       setShowModal(true);
     }
@@ -135,7 +132,6 @@ function Questions() {
           onClick={() => {
             var correct = Object.values(responses).filter(Boolean).length;
 
-            console.log("firstCorrect", correct);
             nextQuestion(correct);
           }}
           className="bg-blue-500 text-white px-5 py-2 rounded-lg hover:bg-blue-600"
