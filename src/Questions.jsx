@@ -6,6 +6,7 @@ function Questions() {
   const [questions, setQuestions] = useState([]);
   const [responses, setResponses] = useState({}); // Store user's responses (keyed by question index)
   const [showModal, setShowModal] = useState(false);
+  const [questionNumber, setQuestionNumber] = useState(0); // Track the current question
 
   const { topic = 9, difficulty = "easy", amount = 10 } = useParams(); // Default values
 
@@ -36,6 +37,7 @@ function Questions() {
   const restartQuiz = () => {
     setResponses({});
     setShowModal(false);
+    setQuestionNumber(0); // Reset to the first question
     fetchQuestions(); // Reload questions
   };
 
@@ -44,57 +46,80 @@ function Questions() {
     return options.sort(() => Math.random() - 0.5);
   };
 
-  return (
-    <div className="flex flex-col ">
-      <div className="text-2xl font-bold">Questions</div>
-      {questions.map((question, index) => {
-        const options = shuffleOptions(
-          question.incorrect_answers,
-          question.correct_answer
-        );
+  const nextQuestion = () => {
+    if (questionNumber < questions.length - 1) {
+      setQuestionNumber((prev) => prev + 1);
+    } else {
+      setShowModal(true); // Show the modal when the quiz ends
+    }
+  };
 
-        return (
-          <div
-            key={index}
-            className="flex flex-col justify-start items-start mb-6 gap-5"
-          >
-            <div className="flex gap-2">
-              <span>{index + 1} .</span>
-              <div dangerouslySetInnerHTML={{ __html: question.question }} />
-            </div>
-            <div className="flex gap-10 ml-10">
-              {options.map((option, optIndex) => (
-                <button
-                  key={optIndex}
-                  onClick={() =>
-                    checkAnswer(option, index, question.correct_answer)
-                  }
-                  className="bg-white px-5 py-2 text-black rounded-xl hover:bg-gray-200"
-                  disabled={responses[index] !== undefined} // Disable button after answering
-                  dangerouslySetInnerHTML={{ __html: option }}
-                />
-              ))}
-            </div>
-            {responses[index] !== undefined && (
-              <div
-                className={`mt-2 ${
-                  responses[index] ? "text-green-500" : "text-red-500"
-                }`}
-              >
-                {responses[index] ? "Correct" : "Incorrect"}
-              </div>
-            )}
+  const previousQuestion = () => {
+    if (questionNumber > 0) {
+      setQuestionNumber((prev) => prev - 1);
+    }
+  };
+
+  const currentQuestion = questions[questionNumber];
+
+  return (
+    <div className="flex flex-col items-center">
+      <div className="text-2xl font-bold mb-5">
+        Question {questionNumber + 1}
+      </div>
+      {currentQuestion && (
+        <div className="flex flex-col items-start gap-5">
+          <div className="text-lg">
+            <div
+              dangerouslySetInnerHTML={{ __html: currentQuestion.question }}
+            />
           </div>
-        );
-      })}
-      <button
-        className="bg-blue-500 text-white px-6 py-3 rounded-lg mt-5 hover:bg-blue-600"
-        onClick={() => {
-          setShowModal(true);
-        }}
-      >
-        Submit
-      </button>
+          <div className="flex gap-5">
+            {shuffleOptions(
+              currentQuestion.incorrect_answers,
+              currentQuestion.correct_answer
+            ).map((option, optIndex) => (
+              <button
+                key={optIndex}
+                onClick={() =>
+                  checkAnswer(
+                    option,
+                    questionNumber,
+                    currentQuestion.correct_answer
+                  )
+                }
+                className="bg-white px-5 py-2 text-black rounded-xl hover:bg-gray-200"
+                disabled={responses[questionNumber] !== undefined} // Disable button after answering
+                dangerouslySetInnerHTML={{ __html: option }}
+              />
+            ))}
+          </div>
+          {responses[questionNumber] !== undefined && (
+            <div
+              className={`mt-2 ${
+                responses[questionNumber] ? "text-green-500" : "text-red-500"
+              }`}
+            >
+              {responses[questionNumber] ? "Correct" : "Incorrect"}
+            </div>
+          )}
+        </div>
+      )}
+      <div className="flex gap-5 mt-5">
+        <button
+          onClick={previousQuestion}
+          className="bg-gray-500 text-white px-5 py-2 rounded-lg hover:bg-gray-600"
+          disabled={questionNumber === 0} // Disable if it's the first question
+        >
+          Previous
+        </button>
+        <button
+          onClick={nextQuestion}
+          className="bg-blue-500 text-white px-5 py-2 rounded-lg hover:bg-blue-600"
+        >
+          {questionNumber < questions.length - 1 ? "Next" : "Submit"}
+        </button>
+      </div>
 
       {/* Modal */}
       {showModal && (
@@ -115,9 +140,7 @@ function Questions() {
               >
                 Restart Quiz
               </button>
-
               <a
-                // onClick={restartQuiz}
                 href="/topics"
                 className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600"
               >
