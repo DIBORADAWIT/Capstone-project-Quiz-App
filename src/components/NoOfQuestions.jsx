@@ -17,6 +17,7 @@ function NoOfQuestions() {
               className="bg-white text-black rounded-lg px-5 py-2 w-full"
               type="number"
               min={0}
+              max={50}
               onChange={(event) => setQuestions(event.target.value)}
               value={questions}
             />
