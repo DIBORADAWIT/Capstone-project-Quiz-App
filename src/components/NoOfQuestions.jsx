@@ -3,12 +3,12 @@ import { useParams } from "react-router-dom";
 
 function NoOfQuestions() {
   const [questions, setQuestions] = useState(0);
-  const { topic, difficulty } = useParams();
+  const { topic, topicName, difficulty } = useParams();
   return (
     <div>
       <div className="flex flex-col gap-20">
         <div className="text-7xl font-extrabold underline">
-          Number of Questions
+          Number of Questions {topicName}
         </div>
 
         <div className="flex flex-col gap-10">
@@ -24,14 +24,14 @@ function NoOfQuestions() {
           </div>
           <div className="flex gap-10 mt-10">
             <a
-              href={`/difficulty/${topic}`}
+              href={`/difficulty/${topic}/${topicName}`}
               className="bg-white text-black px-10 py-2 rounded-lg"
             >
               Back
             </a>
 
             <a
-              href={`/questions/${topic}/${difficulty}/${questions}`}
+              href={`/questions/${topic}/${topicName}/${difficulty}/${questions}`}
               className="bg-white text-black px-10 py-2 rounded-lg"
             >
               Next

@@ -8,7 +8,7 @@ function Questions() {
   const [showModal, setShowModal] = useState(false);
   const [questionNumber, setQuestionNumber] = useState(0); // Track the current question
 
-  const { topic = 9, difficulty = "easy", amount = 10 } = useParams(); // Default values
+  const { topic, topicName, difficulty, amount } = useParams(); // Default values
 
   useEffect(() => {
     fetchQuestions();
@@ -64,6 +64,7 @@ function Questions() {
 
   return (
     <div className="flex flex-col items-center">
+      <div className="text-4xl font-extrabold mb-20 ">{topicName}</div>
       <div className="text-2xl font-bold mb-5">
         Question {questionNumber + 1}
       </div>

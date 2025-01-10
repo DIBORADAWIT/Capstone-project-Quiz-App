@@ -59,7 +59,7 @@ function Topic() {
                 className={`${
                   colors[index % colors.length]
                 } text-black px-5 py-2`}
-                href={`/difficulty/${topic.id}`}
+                href={`/difficulty/${topic.id}/${topic.name}`}
                 //   onClick={() => getTopicID(topic.id)}
               >
                 {topic.name}

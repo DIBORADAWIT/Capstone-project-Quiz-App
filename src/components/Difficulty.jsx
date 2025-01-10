@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 
 function Difficulty() {
-  const { topic } = useParams();
+  const { topic, topicName } = useParams();
 
   const [difficulty, setDifficulty] = useState("");
   return (
@@ -38,7 +38,7 @@ function Difficulty() {
           {difficulty != "" && (
             <a
               className="bg-white text-black px-10 py-2 rounded-lg"
-              href={`/noOfQuestions/${topic}/${difficulty}`}
+              href={`/noOfQuestions/${topic}/${topicName}/${difficulty}`}
             >
               Next
             </a>

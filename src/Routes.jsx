@@ -19,13 +19,13 @@ function Routers() {
       <Route path="/homes" element={<Home />} />
 
       <Route path="/topics" element={<Topic />} />
-      <Route path="/difficulty/:topic" element={<Difficulty />} />
+      <Route path="/difficulty/:topic/:topicName" element={<Difficulty />} />
       <Route
-        path="/noOfQuestions/:topic/:difficulty"
+        path="/noOfQuestions/:topic/:topicName/:difficulty"
         element={<NoOfQuestions />}
       />
       <Route
-        path="/questions/:topic/:difficulty/:amount"
+        path="/questions/:topic/:topicName/:difficulty/:amount"
         element={<Questions />}
       />
     </Routes>
