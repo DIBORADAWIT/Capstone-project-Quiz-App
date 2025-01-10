@@ -6,6 +6,7 @@ import Subjects from "./Subjects";
 import Custom from "./Custom";
 
 import React from "react";
+import Questions from "./Questions";
 
 function Routers() {
   return (
@@ -17,6 +18,7 @@ function Routers() {
       <Route path="/infos" element={<Information />} />
       <Route path="/subs" element={<Subjects />} />
       <Route path="/custom" element={<Custom />} />
+      <Route path="/questions" element={<Questions />} />
     </Routes>
   );
 }
