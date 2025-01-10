@@ -1,25 +1,50 @@
 import React from "react";
 import "./App.css";
+import userHistory from "./stores/userHistory";
 
 function Intro() {
+  const history = userHistory((state) => state.history);
+  const clearHistory = userHistory((state) => state.clearHistory);
+
   return (
-    <div className="quizappaall">
-      <div className="h1logo">THE QUIZ</div>
-      <div className="logo">
-        <img
-          src="https://www.shutterstock.com/shutterstock/photos/2052894734/display_1500/stock-vector-quiz-and-question-marks-trivia-night-quiz-symbol-neon-sign-night-online-game-with-questions-2052894734.jpg"
-          alt="logo.png"
-          className="logo"
-        />
-      </div>
-      <a
-        href="/homes"
-        className="bg-pink-200 px-10 py-2 text-black rounded-lg uppercase"
-      >
-        start
-      </a>
+    <div>
+      <h2>User History</h2>
+      {history.length > 0 ? (
+        <ul>
+          {history.map((entry, index) => (
+            <li key={index}>
+              <p>Topic: {entry.topicName}</p>
+              <p>Correct: {entry.correctCount}</p>
+              <p>Incorrect: {entry.incorrectCount}</p>
+              <p>Date: {new Date(entry.timestamp).toLocaleString()}</p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No history found</p>
+      )}
+      <button onClick={clearHistory}>Clear History</button>
     </div>
   );
 }
 
 export default Intro;
+
+function QuizSummary({ topicName, correctAnswers, incorrectAnswers }) {
+  const addHistory = userHistory((state) => state.addHistory);
+
+  const handleSaveHistory = () => {
+    addHistory(topicName, correctAnswers, incorrectAnswers);
+    alert("History saved!");
+  };
+
+  return (
+    <div>
+      <h2>Quiz Summary</h2>
+      <p>Topic: {topicName}</p>
+      <p>Correct: {correctAnswers}</p>
+      <p>Incorrect: {incorrectAnswers}</p>
+      <button onClick={handleSaveHistory}>Save to History</button>
+    </div>
+  );
+}

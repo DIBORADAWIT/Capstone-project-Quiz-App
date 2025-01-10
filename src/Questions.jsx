@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import userHistory from "./stores/userHistory";
 
 function Questions() {
   const [questions, setQuestions] = useState([]);
@@ -46,11 +47,17 @@ function Questions() {
     return options.sort(() => Math.random() - 0.5);
   };
 
-  const nextQuestion = () => {
+  const nextQuestion = (responses) => {
     if (questionNumber < questions.length - 1) {
       setQuestionNumber((prev) => prev + 1);
     } else {
-      setShowModal(true); // Show the modal when the quiz ends
+      // Save to history
+      var correct = Object.values(responses).filter(Boolean).length;
+      var incorrect = questions.length - correct;
+      handleSaveHistory(topicName, correct, incorrect);
+
+      // Show the modal when the quiz ends
+      setShowModal(true);
     }
   };
 
@@ -61,6 +68,14 @@ function Questions() {
   };
 
   const currentQuestion = questions[questionNumber];
+
+  // userHistory zustand
+  const addHistory = userHistory((state) => state.addHistory);
+
+  const handleSaveHistory = (correctAnswers, incorrectAnswers) => {
+    addHistory(topicName, correctAnswers, incorrectAnswers);
+    // alert("History saved!");
+  };
 
   return (
     <div className="flex flex-col items-center">
@@ -115,7 +130,9 @@ function Questions() {
           Previous
         </button>
         <button
-          onClick={nextQuestion}
+          onClick={() => {
+            nextQuestion(responses);
+          }}
           className="bg-blue-500 text-white px-5 py-2 rounded-lg hover:bg-blue-600"
         >
           {questionNumber < questions.length - 1 ? "Next" : "Submit"}
